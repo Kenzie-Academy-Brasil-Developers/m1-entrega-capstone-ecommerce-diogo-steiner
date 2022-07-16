@@ -63,7 +63,7 @@ function criandoCard(produto) {
     pDescricao.innerText = produtoDescricao
     spanPreco.innerText = `R$ ${produtoValor.toFixed(2).replace(".", ",")}`
     btnAddCart.innerText = produtoAddCart
-    btnAddCart.setAttribute("id", produtoId)
+    tagLi.setAttribute("id", produtoId)
 
 
     //Pendurando elementos
@@ -79,17 +79,19 @@ function criandoCard(produto) {
 
 
 
+listaVitrine.addEventListener("click", adcicionandoCarrinho)
 
+function adcicionandoCarrinho (event) {
+    
+    elementoClicado = event.target
+    console.log(elementoClicado);
 
-listaVitrine.addEventListener("click", adicionandoCarrinho)
-
-
-function adicionandoCarrinho (event) {
-    let elementoClicado = event.target
-
-    if(elementoClicado.tagName == "BUTTON") {
-        let buttonId = elementoClicado.id
+    if (elementoClicado.tagName == "BUTTON") {
         
+        let produto = elementoClicado.parentNode.parentNode.parentNode.cloneNode(true)
+        produto.classList.add("produto-carrinho")
+        console.log(produto);
+        listaCarrinho.appendChild(produto)
     }
 }
 
