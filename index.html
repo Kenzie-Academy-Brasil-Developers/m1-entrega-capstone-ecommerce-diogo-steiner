@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/database.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.svg" alt="Weartake">
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li>Todos</li>
+                    <li>Acessórios</li>
+                    <li>Calçados</li>
+                    <li>Camisetas</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container-produtos container">
+        <main class="vitrine">
+            <ul class="lista-vitrine">
+            </ul>
+        </main>
+
+
+        <aside class="pesquisa-carrinho">
+            <section class="area-pesquisa">
+                <input type="text" name="pesquisa" id="inputText" placeholder="Digite aqui sua pesquisa">
+                <button>Pesquisar</button>
+            </section>
+
+            <section class="carrinho-compras">
+                <div class="carrinho-compras-title">
+                    <h3>Carrinho de compras</h3>
+                </div>
+
+                <section class="carrinho-compras-produtos">
+                    <!-- <div class="carrinho-vazio-text">
+                        <span>Carrinho vázio</span>
+                        <span>Adicione itens</span>
+                    </div> -->
+                    <ul class="lista-carrinho">  
+                    </ul>
+                </section>
+            </section>
+
+            <section class="quantidade-preco">
+                <div class="quantidade">
+                    <span>Quantidade</span>
+                    <span>3</span>
+                </div>
+                <div class="preco">
+                    <span>Total</span>
+                    <span>R$ 200,00</span>
+                </div>
+            </section>
+
+        </aside>
+    </div>
+
+
+
+    <script src="js/index.js"></script>
+</body>
+</html>
