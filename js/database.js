@@ -39,7 +39,7 @@ const data = [
       "Esta t-shirt é imprescindível no seu guarda-roupa, combinando o caimento intemporal de...",
     value: 100,
     addCart: "Adicionar ao carrinho",
-    tag: ["Camisetas"],
+    tag: ["Camisetas", "Acessórios"],
   },
   {
     id: 5,

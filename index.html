@@ -1,31 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aqui na Weartake você encontra roupas, calçados, bolsas, relógios e muito mais em moda feminina e masculina pelos melhores preços. Compre online hoje mesmo!">
     <script src="js/database.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Weartake - Fique por dentro da moda</title>
 </head>
 <body>
 
     <header class="cabecalho">
         <div class="container">
             <div class="logo">
-                <img src="img/logo.svg" alt="Weartake">
+                <a href="#">
+                    <img src="img/logo.svg" alt="Weartake">
+                </a>
             </div>
             <nav class="menu">
-                <ul>
-                    <li>Todos</li>
-                    <li>Acessórios</li>
-                    <li>Calçados</li>
-                    <li>Camisetas</li>
-                </ul>
+                <button>Todos</button>
+                <button>Acessórios</button>
+                <button>Calçados</button>
+                <button>Camisetas</button>
             </nav>
         </div>
     </header>
@@ -39,8 +41,8 @@
 
         <aside class="pesquisa-carrinho">
             <section class="area-pesquisa">
-                <input type="text" name="pesquisa" id="inputText" placeholder="Digite aqui sua pesquisa">
-                <button>Pesquisar</button>
+                <input type="text" name="pesquisa" id="input-text" placeholder="Digite aqui sua pesquisa">
+                <button id="btn-pesquisa">Pesquisar</button>
             </section>
 
             <section class="carrinho-compras">

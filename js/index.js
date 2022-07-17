@@ -5,13 +5,44 @@ const carrinhoQuantidade = document.getElementById("quantidade-produtos")
 const carrinhoTotal = document.getElementById("total-produtos")
 const quantidadePrecoCarrinho = document.querySelector(".quantidade-preco")
 const carrinhoVazioText = document.querySelector(".carrinho-vazio-text")
+const inputPesquisa = document.getElementById("input-text")
+const btnPesquisa = document.getElementById("btn-pesquisa")
+const header = document.querySelector(".cabecalho")
 let cartTotProdutos = 0
 let cartQtProdutos = 0
 let arrayCarrinho = []
 
 
+header.addEventListener("click", listadoCategorias)
+function listadoCategorias(event, arrayProdutos = data) {
+    elementoClicado = event.target
+
+    if (elementoClicado.tagName == "BUTTON") {
+        let categoria = elementoClicado.innerText
+        let array = []
+        
+        if (categoria != "Todos") {
+            for (let i = 0; i < arrayProdutos.length; i++) {
+                let produto = arrayProdutos[i]
+                let produtoCategoria = produto.tag
+                for (let j = 0; j < produtoCategoria.length; j++) {
+                    if (produtoCategoria[j] == categoria) {
+                        array.push(produto)
+                    }
+                }
+            }
+            listandoProdutos(array)
+        } else {
+            listandoProdutos()  
+        }  
+    }
+    
+}
+
+
 function listandoProdutos (arrayProdutos = data, tagUl = listaVitrine) {
 
+    tagUl.innerHTML = ""
     for (let i = 0; i < arrayProdutos.length; i++) {
         let produto = arrayProdutos[i]
         let card = criandoCard(produto)
@@ -19,8 +50,6 @@ function listandoProdutos (arrayProdutos = data, tagUl = listaVitrine) {
     }
 }
 listandoProdutos()
-
-
 
 
 
@@ -44,6 +73,13 @@ function criandoCard(produto) {
     const divImformacoes = document.createElement("div") 
     const divCategoriaTitle = document.createElement("div")
     const spanCategoria = document.createElement("span")
+
+    for (let i = 0; i < produtoTag.length; i++) {
+        const spanCategoria = document.createElement("span")
+        spanCategoria.innerText = produtoTag[i]
+        divCategoriaTitle.appendChild(spanCategoria)
+    }
+
     const nomeProduto = document.createElement("h2")
     const divDescricao = document.createElement("div")
     const pDescricao = document.createElement("p")
@@ -75,15 +111,13 @@ function criandoCard(produto) {
     //Pendurando elementos
     divImg.appendChild(imgProduto)
     divImformacoes.append(divCategoriaTitle, divDescricao, divPrecoBtn)
-    divCategoriaTitle.append(spanCategoria,nomeProduto)
+    divCategoriaTitle.append(nomeProduto)
     divDescricao.appendChild(pDescricao)
     divPrecoBtn.append(spanPreco, btnAddCart)
     tagLi.append(divImg, divImformacoes)
 
     return tagLi
 }
-
-
 
 
 
@@ -112,8 +146,6 @@ function adcicionandoCarrinho (event, arrayProdutos = data) {
 
 
 
-
-
 listaCarrinho.addEventListener("click", removendoCarrinho)
 function removendoCarrinho (event) {
 
@@ -131,8 +163,6 @@ function removendoCarrinho (event) {
 
 
 
-
-
 function quantidadeTotalCarrinho (quantidade, total) {
     if (listaCarrinho.childElementCount > 0) {
         quantidadePrecoCarrinho.classList.remove("esconder")
@@ -147,6 +177,28 @@ function quantidadeTotalCarrinho (quantidade, total) {
 
 
 
+btnPesquisa.addEventListener("click", pesquisaProduto)
+inputPesquisa.addEventListener("keypress", pesquisaProduto)
+function pesquisaProduto (event, arrayProdutos = data) {
+    
+    let pesquisa = inputPesquisa.value.trim().toLowerCase()
+    let arrayPesquisa = []
+
+    if (event.type == "keypress" && event.keyCode == 13 || event.type == "click") {
+        if (pesquisa != "") {
+            for(let i = 0; i < arrayProdutos.length; i++) {
+                let nomeProduto = arrayProdutos[i].nameItem
+                nomeProduto = nomeProduto.toLowerCase().trim()
+                if (nomeProduto.includes(pesquisa)) {
+                    arrayPesquisa.push(arrayProdutos[i])
+                }
+            }
+            listandoProdutos(arrayPesquisa)
+        } else {
+            listandoProdutos()
+        }
+    }
+}
 
 
 
@@ -154,50 +206,3 @@ function quantidadeTotalCarrinho (quantidade, total) {
 
 
 
-
-
-
-
-
-
-//Modelo CArrinho
-{/* <li class="card produto-carrinho">
-    <div class="img">
-        <img src="img/jaqueta.svg" alt="">
-    </div>
-    <div class="informacoes">
-        <div class="categoria-title">
-            <span>Camisetas</span>
-            <h2>Lightweight Jacket</h2>
-        </div>
-        <div class="descricao">
-            <p>Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...</p>
-        </div>
-        <div class="preco-btn">
-            <span>R$ 100.00</span>
-            <button>Adicionar ao carrinho</button>
-        </div>
-    </div>
-</li> */}
-
-
-
-//Modelo vitrine
-{/* <li class="card">
-    <div class="img">
-        <img src="img/jaqueta.svg" alt="">
-    </div>   
-    <div class="informacoes">
-        <div class="categoria-title">
-            <span>Camisetas</span>
-            <h2>Lightweight Jacket</h2>
-        </div>
-        <div class="descricao">
-            <p>Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...</p>
-        </div>
-        <div class="preco-btn">
-            <span>R$ 100.00</span>
-            <button>Adicionar ao carrinho</button>
-        </div>
-    </div>
-</li> */}
