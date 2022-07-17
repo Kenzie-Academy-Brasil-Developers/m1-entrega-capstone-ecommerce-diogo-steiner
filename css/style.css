@@ -12,7 +12,7 @@ body {
     overflow: overlay;
 }
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
     background-color: transparent;
 }
 
@@ -210,24 +210,34 @@ body {
 .pesquisa-carrinho {
     display: flex;
     flex-direction: column;
-    /* gap: 30px; */
-    width: 347px;
-    /* height: 214px; */
+    max-width: 347px;
+    width: 100%;
 }
 
 .pesquisa-carrinho .area-pesquisa {
     display: flex;
     gap: 8px;
+    transition: .6s;
+}
+
+.pesquisa-carrinho .area-pesquisa:hover {
+    transform: scale(1.03);
 }
 
 .pesquisa-carrinho .area-pesquisa input {
+    max-width: 246px;
+    width: 100%;
     padding-left: 14px;
-    width: 246px;
     height: 50px;
     background-color: var(--grey-0);
     outline-style: none;
     border-style: none;
     color: var(--grey-50);
+    transition: .6s;
+}
+
+.pesquisa-carrinho .area-pesquisa input:hover {
+    background-color: #eceaea;
 }
 
 .pesquisa-carrinho .area-pesquisa input::placeholder {
@@ -235,26 +245,31 @@ body {
 }
 
 .pesquisa-carrinho .area-pesquisa  button {
-    width: 96px;
-    /* height: 50px; */
+    max-width: 96px;
+    width: 100%;
     background-color: var(--color-secondary);
     color: white;
     outline-style: none;
     border-style: none;
     font-weight: 600;
     line-height: 16px;
+    transition: .6s;
 }
 
-
-
-
+.pesquisa-carrinho .area-pesquisa  button:hover {
+    background-color: #362686;
+} 
 
 .pesquisa-carrinho .carrinho-compras {
-    margin-top: 30px;
+    transition: .6s;
 }
 
+.pesquisa-carrinho .carrinho-compras:hover {
+    transform: scale(1.03);
+}
 
 .pesquisa-carrinho .carrinho-compras .carrinho-compras-title { 
+    margin-top: 30px;
     height: 50px;
     background-color: var(--color-secondary);
     display: flex;
@@ -275,13 +290,12 @@ body {
     background-color: var(--grey-0);
     display: flex;
     flex-direction: column;
-/*     align-items: center; */
-   /*  justify-content: center; */
-    gap: 10px;
     color: var(--grey-100);
     overflow-y: auto;
     padding: 28px 14px;
 }
+
+
 
 .pesquisa-carrinho .carrinho-compras .carrinho-compras-produtos .carrinho-vazio-text  {
     display: flex;
@@ -303,8 +317,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    height: 100%;
-    width: 100%;
 }
 
 
@@ -335,28 +347,16 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-/* .pesquisa-carrinho .carrinho-compras .carrinho-compras-produtos {
-    justify-content: flex-start;
-} */
-
-
 .produto-carrinho {
     display: flex;
     height: 92px;
     width: 100%;
     gap: 18px;
-/*     background-color: red; */
+    transition: .6s;
+}
+
+.produto-carrinho:hover {
+    transform: scale(1.05);
 }
 
 .produto-carrinho .img {
@@ -383,6 +383,7 @@ body {
     font-family: 600;
     line-height: 16px;
     color: var(--color-primary);
+    font-weight: 600;
 }
 
 .produto-carrinho .informacoes, 
@@ -390,11 +391,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 14px;
-
-}
-
-.produto-carrinho .preco-btn span {
-    font-weight: 600;
 }
 
 
@@ -407,15 +403,23 @@ body {
     font-weight: 400;
     padding: 0 1px;
     width: 133px;
-}
-
-.produto-carrinho .preco-btn button:hover {
     cursor: pointer;
 }
 
 
+.produto-carrinho .preco-btn button::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0%;
+    margin: -2px auto;
+    background-color: var(--color-primary);
+    transition: .6s;
+}
 
-
+.produto-carrinho .preco-btn button:hover::after {
+    width: 100%;
+}
 
 
 .pesquisa-carrinho .esconder, 

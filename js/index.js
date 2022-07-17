@@ -55,7 +55,6 @@ listandoProdutos()
 
 function criandoCard(produto) {
 
-    //Capturando informações do produto
     let produtoId = produto.id
     let produtoImg = produto.img
     let produtoNome = produto.nameItem
@@ -66,7 +65,6 @@ function criandoCard(produto) {
     
 
 
-    //Criando Tags
     const tagLi = document.createElement("li")
     const divImg = document.createElement("div")
     const imgProduto = document.createElement("img")
@@ -88,7 +86,6 @@ function criandoCard(produto) {
     const btnAddCart = document.createElement("button")
 
 
-    //Adicionando Classes
     tagLi.classList.add("card")
     divImg.classList.add("img")
     divImformacoes.classList.add("informacoes")
@@ -98,7 +95,6 @@ function criandoCard(produto) {
     spanPreco.classList.add("preco")
 
 
-    //Adicionando Conteúdo
     imgProduto.setAttribute("src", produtoImg)
     spanCategoria.innerText = produtoTag
     nomeProduto.innerText = produtoNome
@@ -108,7 +104,6 @@ function criandoCard(produto) {
     tagLi.setAttribute("id", produtoId)
 
 
-    //Pendurando elementos
     divImg.appendChild(imgProduto)
     divImformacoes.append(divCategoriaTitle, divDescricao, divPrecoBtn)
     divCategoriaTitle.append(nomeProduto)
