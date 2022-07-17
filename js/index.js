@@ -95,7 +95,7 @@ function criandoCard(produto) {
     spanPreco.classList.add("preco")
 
 
-    imgProduto.setAttribute("src", produtoImg)
+    imgProduto.setAttribute("src", produtoImg.replace(".", ""))
     spanCategoria.innerText = produtoTag
     nomeProduto.innerText = produtoNome
     pDescricao.innerText = produtoDescricao
