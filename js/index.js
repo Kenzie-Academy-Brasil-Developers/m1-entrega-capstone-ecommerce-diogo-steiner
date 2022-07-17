@@ -1,21 +1,25 @@
 
 const listaVitrine = document.querySelector(".lista-vitrine")
 const listaCarrinho = document.querySelector(".lista-carrinho")
+const carrinhoQuantidade = document.getElementById("quantidade-produtos")
+const carrinhoTotal = document.getElementById("total-produtos")
+const quantidadePrecoCarrinho = document.querySelector(".quantidade-preco")
+const carrinhoVazioText = document.querySelector(".carrinho-vazio-text")
+let cartTotProdutos = 0
+let cartQtProdutos = 0
+let arrayCarrinho = []
 
 
-
-
-function listandoProdutos (arrayProdutos, tagUl = listaVitrine) {
+function listandoProdutos (arrayProdutos = data, tagUl = listaVitrine) {
 
     for (let i = 0; i < arrayProdutos.length; i++) {
         let produto = arrayProdutos[i]
         let card = criandoCard(produto)
         tagUl.appendChild(card)
-
     }
 }
+listandoProdutos()
 
-listandoProdutos(data)
 
 
 
@@ -30,6 +34,7 @@ function criandoCard(produto) {
     let produtoValor = produto.value
     let produtoAddCart = produto.addCart
     let produtoTag = produto.tag
+    
 
 
     //Criando Tags
@@ -54,6 +59,7 @@ function criandoCard(produto) {
     divCategoriaTitle.classList.add("categoria-title")
     divDescricao.classList.add("descricao")
     divPrecoBtn.classList.add("preco-btn")
+    spanPreco.classList.add("preco")
 
 
     //Adicionando Conteúdo
@@ -69,7 +75,7 @@ function criandoCard(produto) {
     //Pendurando elementos
     divImg.appendChild(imgProduto)
     divImformacoes.append(divCategoriaTitle, divDescricao, divPrecoBtn)
-    divCategoriaTitle.appendChild(spanCategoria,nomeProduto)
+    divCategoriaTitle.append(spanCategoria,nomeProduto)
     divDescricao.appendChild(pDescricao)
     divPrecoBtn.append(spanPreco, btnAddCart)
     tagLi.append(divImg, divImformacoes)
@@ -79,22 +85,65 @@ function criandoCard(produto) {
 
 
 
-listaVitrine.addEventListener("click", adcicionandoCarrinho)
 
-function adcicionandoCarrinho (event) {
+
+listaVitrine.addEventListener("click", adcicionandoCarrinho)
+function adcicionandoCarrinho (event, arrayProdutos = data) {
     
     elementoClicado = event.target
-    console.log(elementoClicado);
 
-    if (elementoClicado.tagName == "BUTTON") {
-        
+    if (elementoClicado.tagName == "BUTTON") {    
         let produto = elementoClicado.parentNode.parentNode.parentNode.cloneNode(true)
         produto.classList.add("produto-carrinho")
-        console.log(produto);
+        let id = produto.id
+        produto.querySelector("button").innerText = "Remover do carrinho"
         listaCarrinho.appendChild(produto)
+
+        arrayCarrinho.push(produto)
+        for (let i = 0; i < arrayProdutos.length; i++) {
+            let produto = arrayProdutos[i]
+            if (produto.id == id) {
+                cartTotProdutos += arrayProdutos[i].value
+            }
+        }
+        quantidadeTotalCarrinho(arrayCarrinho.length ,cartTotProdutos)
     }
 }
 
+
+
+
+
+listaCarrinho.addEventListener("click", removendoCarrinho)
+function removendoCarrinho (event) {
+
+    elementoClicado = event.target
+
+    if (elementoClicado.tagName == "BUTTON") {
+        let produto = elementoClicado.parentNode.parentNode.parentNode
+        let index = produto.id
+        produto.remove()
+        arrayCarrinho.pop()
+        cartTotProdutos -= data[index - 1].value
+        quantidadeTotalCarrinho(arrayCarrinho.length, cartTotProdutos)
+    }
+}
+
+
+
+
+
+function quantidadeTotalCarrinho (quantidade, total) {
+    if (listaCarrinho.childElementCount > 0) {
+        quantidadePrecoCarrinho.classList.remove("esconder")
+        carrinhoVazioText.classList.add("esconder")
+    } else {
+        quantidadePrecoCarrinho.classList.add("esconder")
+        carrinhoVazioText.classList.remove("esconder")
+    }
+    carrinhoQuantidade.innerText = quantidade
+    carrinhoTotal.innerText = `R$ ${total.toFixed(2).replace(".", ",")}`
+}
 
 
 
