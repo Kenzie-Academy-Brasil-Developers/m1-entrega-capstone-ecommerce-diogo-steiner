@@ -4,79 +4,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aqui na Weartake você encontra roupas, calçados, bolsas, relógios e muito mais em moda feminina e masculina pelos melhores preços. Compre online hoje mesmo!">
-    <script src="js/database.js"></script>
+    <meta name="description" content="Aqui no Weartake você encontra Roupas femininas, plus size, moda infantil, ... Fique por dentro das últimas novidades e promoções da nossa loja!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="src/css/reset.css">
+    <link rel="stylesheet" href="src/css/style.css">
+    <script type="text/javascript" src="src/js/database.js"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Weartake - Fique por dentro da moda</title>
+    <title>Weartake | Moda do seu jeito</title>
 </head>
 <body>
-
+    
     <header class="cabecalho">
         <div class="container">
-            <div class="logo">
+            <div class="img">
                 <a href="#">
-                    <img src="img/logo.svg" alt="Weartake">
+                    <img src="src/img/logo.svg" alt="Weartake | Moda do seu jeito">
                 </a>
             </div>
-            <nav class="menu">
+            <div class="menu" id="menu-categorias">
                 <button>Todos</button>
                 <button>Acessórios</button>
                 <button>Calçados</button>
                 <button>Camisetas</button>
-            </nav>
+            </div>
         </div>
     </header>
 
-    <div class="container-produtos container">
-        <main class="vitrine">
-            <ul class="lista-vitrine">
+
+    <div class="produtos-container container">
+        <main class="produtos">
+            <ul class="produtos-lista" id="produtos-lista">
+
             </ul>
+
+            <section class="produtos-sem-estoque">
+                <span>Fora de estoque</span>
+                <ul class="produtos-sem-estoque-lista" id="produtos-sem-estoque-lista">
+            
+                </ul>
+            </section>
         </main>
 
-
         <aside class="pesquisa-carrinho">
-            <section class="area-pesquisa">
-                <input type="text" name="pesquisa" id="input-text" placeholder="Digite aqui sua pesquisa">
+            <section class="pesquisa">
+                <input type="text" name="pesquisa" id="inputPesquisa" placeholder="Digite aqui sua pesquisa">
                 <button id="btn-pesquisa">Pesquisar</button>
             </section>
 
-            <section class="carrinho-compras">
-                <div class="carrinho-compras-title">
-                    <h3>Carrinho de compras</h3>
-                </div>
+            <section class="carrinho">
+                <h3>Carrinho de compras</h3>
 
-                <section class="carrinho-compras-produtos">
-                    <div class="carrinho-vazio-text">
-                        <span>Carrinho vázio</span>
-                        <span>Adicione itens</span>
+                <article class="produtos-carrinho">
+                    <div class="produtos-carrinho-vazio-text" id="carrinho-vazio-text">
+                        <span class="text">
+                            Carrinho vázio
+                        </span>
+                        <span>
+                            Adicione itens
+                        </span>
                     </div>
-                    <ul class="lista-carrinho">  
-                      
+                    
+                    <ul class="produtos-carrinho-lista esconder" id="produtos-carrinho-lista">
                     </ul>
+                </article>
+                
+                <section class="carrinho-resumo esconder" id="carrinho-resumo">
+                    <article class="carrinho-resumo-quantidade">
+                        <span>Quantidade:</span>
+                        <span id="carrinho-quantidade">3</span>
+                    </article>
+
+                    <article class="carrinho-resumo-total">
+                        <span>Total:</span>
+                        <span id="carrinho-total">R$ 200,00</span>
+                    </article>
                 </section>
             </section>
-
-            <section class="quantidade-preco esconder">
-                <div class="quantidade">
-                    <span>Quantidade</span>
-                    <span id="quantidade-produtos"></span>
-                </div>
-                <div class="preco">
-                    <span>Total</span>
-                    <span id="total-produtos"></span>
-                </div>
-            </section>
-
         </aside>
     </div>
-
-
-
-    <script src="js/index.js"></script>
+    
+    <script type="text/javascript" src="src/js/script.js"></script>
 </body>
 </html>
